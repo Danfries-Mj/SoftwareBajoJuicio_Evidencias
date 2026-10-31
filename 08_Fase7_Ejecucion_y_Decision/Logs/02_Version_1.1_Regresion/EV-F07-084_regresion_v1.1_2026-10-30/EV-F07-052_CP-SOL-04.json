@@ -1,0 +1,72 @@
+{
+  "evidencia": "EV-F07-052",
+  "caso": "CP-SOL-04",
+  "requisito_o_riesgo": "RF-SOL-03",
+  "tecnica": "Tabla de decisión R4 (tercero sin Bautismo)",
+  "enfoque": "Verificación",
+  "precondicion": "Beneficiario nuevo, sin certificados",
+  "datos": "Primera Comunión, modalidad Terceros, beneficiario sin Bautismo",
+  "resultado_esperado": "HTTP 400 (prerrequisito del beneficiario)",
+  "criterio_aceptacion": "El prerrequisito se valida por beneficiario (HU-17)",
+  "resultado_obtenido": "HTTP 201: Solicitud enviada correctamente, queda pendiente de asignación",
+  "estado": "FALLA",
+  "fecha_hora": "2026-10-30T22:39:32.011Z",
+  "version_codigo": "v1.1 (parche 657d4354)",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/solicitudes-sacramento",
+      "cuerpo": {
+        "id_capilla": 1,
+        "id_documento": 93,
+        "sacramento": "Primera Comunion",
+        "modalidad": "Terceros",
+        "beneficiarios": [
+          {
+            "rol_beneficiario": "Tercero",
+            "nombres": "Tercero",
+            "apellidos": "Sin Bautismo",
+            "cedula": "0719720336"
+          }
+        ]
+      },
+      "status": 201,
+      "ms": 9,
+      "respuesta": {
+        "mensaje": "Solicitud enviada correctamente, queda pendiente de asignación",
+        "solicitud": {
+          "estado": "Pendiente",
+          "hora_fin": null,
+          "modalidad": "Terceros",
+          "id_capilla": 1,
+          "id_usuario": 2,
+          "sacramento": "Primera Comunion",
+          "hora_inicio": null,
+          "id_documento": 93,
+          "id_solicitud": 47,
+          "beneficiarios": [
+            {
+              "cedula": "0719720336",
+              "nombres": "Tercero",
+              "telefono": null,
+              "apellidos": "Sin Bautismo",
+              "id_persona": null,
+              "id_solicitud": 47,
+              "id_beneficiario": 26,
+              "rol_beneficiario": "Tercero"
+            }
+          ],
+          "fecha_asignada": null,
+          "fecha_solicitud": "2026-10-30T17:39:32.004304"
+        }
+      }
+    }
+  ]
+}

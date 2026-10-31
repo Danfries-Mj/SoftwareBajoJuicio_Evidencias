@@ -1,0 +1,40 @@
+{
+  "evidencia": "EV-F07-049",
+  "caso": "CP-SOL-01",
+  "requisito_o_riesgo": "RF-SOL-03",
+  "tecnica": "Tabla de decisión R1 (Primera Comunión sin Bautismo)",
+  "enfoque": "Validación",
+  "precondicion": "Laico sin certificado de Bautismo (hectorQZ@gmail.com)",
+  "datos": "Primera Comunión, modalidad Propia",
+  "resultado_esperado": "HTTP 400 que nombra el certificado faltante",
+  "criterio_aceptacion": "Se rechaza indicando el certificado faltante (HU-17)",
+  "resultado_obtenido": "HTTP 400: No cumple con el prerrequisito. Necesita el certificado de Bautismo emitido.",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T19:04:49.327Z",
+  "version_codigo": "ZIP SHA-256 d1cd257b1c7f461ace63e955fcc6d441536e6635604417bc56643e40a3602ba1",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/solicitudes-sacramento",
+      "cuerpo": {
+        "id_capilla": 1,
+        "id_documento": 93,
+        "sacramento": "Primera Comunion",
+        "modalidad": "Propia"
+      },
+      "status": 400,
+      "ms": 4,
+      "respuesta": {
+        "mensaje": "No cumple con el prerrequisito. Necesita el certificado de Bautismo emitido.",
+        "error": "No cumple con el prerrequisito. Necesita el certificado de Bautismo emitido."
+      }
+    }
+  ]
+}

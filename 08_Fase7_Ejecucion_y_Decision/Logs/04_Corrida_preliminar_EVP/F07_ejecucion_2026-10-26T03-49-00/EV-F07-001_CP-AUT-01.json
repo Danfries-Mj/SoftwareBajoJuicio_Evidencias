@@ -1,0 +1,52 @@
+{
+  "evidencia": "EV-F07-001",
+  "caso": "CP-AUT-01",
+  "requisito_o_riesgo": "RF-AUT-01",
+  "tecnica": "Partición de equivalencia (clase válida)",
+  "enfoque": "Verificación",
+  "precondicion": "Usuario Laico activo",
+  "datos": "Correo válido + contraseña correcta",
+  "resultado_esperado": "HTTP 200 con token JWT",
+  "criterio_aceptacion": "Se recibe un token",
+  "resultado_obtenido": "HTTP 200 con token",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-26T03:49:01.927Z",
+  "version_codigo": "ZIP SHA-256 27d59d5118638e883d7331a60dfad602077290a3088ac1474b09d356a71a5156",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/auth/login",
+      "cuerpo": {
+        "correo": "hectorQZ@gmail.com",
+        "contrasena": "***"
+      },
+      "status": 200,
+      "ms": 130,
+      "respuesta": {
+        "mensaje": "Inicio de sesión exitoso",
+        "usuario": {
+          "id_usuario": 6,
+          "id_persona": 6,
+          "correo": "hectorQZ@gmail.com",
+          "rol": "Laico",
+          "id_capilla": 1,
+          "activo": true,
+          "fecha_registro": "2026-08-01T03:06:56.713Z",
+          "token": null,
+          "cedula": "0706637592",
+          "nombres": "Hector Ricardo",
+          "apellidos": "Correa Quezada",
+          "telefono": "0983145267"
+        },
+        "token": "[token]"
+      }
+    }
+  ]
+}

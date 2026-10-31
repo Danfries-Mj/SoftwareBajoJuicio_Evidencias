@@ -1,0 +1,41 @@
+{
+  "evidencia": "EV-F07-005",
+  "caso": "CP-AUT-05",
+  "requisito_o_riesgo": "RF-AUT-07",
+  "tecnica": "Partición de equivalencia (cédula inválida)",
+  "enfoque": "Verificación",
+  "precondicion": "Ninguna",
+  "datos": "Cédula 0700000000 (dígito verificador incorrecto)",
+  "resultado_esperado": "HTTP 400",
+  "criterio_aceptacion": "Cédula rechazada",
+  "resultado_obtenido": "HTTP 400: La cédula ingresada no es válida",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-26T03:49:02.230Z",
+  "version_codigo": "ZIP SHA-256 27d59d5118638e883d7331a60dfad602077290a3088ac1474b09d356a71a5156",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/auth/registro",
+      "cuerpo": {
+        "cedula": "0700000000",
+        "nombres": "Prueba",
+        "apellidos": "Cedula Mala",
+        "correo": "cedmala.1792986542228@prueba.test",
+        "contrasena": "Ab1.xyzw",
+        "id_capilla": 1
+      },
+      "status": 400,
+      "ms": 1,
+      "respuesta": {
+        "mensaje": "La cédula ingresada no es válida"
+      }
+    }
+  ]
+}

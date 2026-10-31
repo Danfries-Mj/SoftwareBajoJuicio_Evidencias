@@ -1,0 +1,51 @@
+{
+  "evidencia": "EV-F07-031",
+  "caso": "CP-CAT-17",
+  "requisito_o_riesgo": "RF-CAT-09",
+  "tecnica": "Tabla de decisión R1 (catequista de la misma capilla)",
+  "enfoque": "Validación",
+  "precondicion": "Inscrito 51 de la capilla 1",
+  "datos": "Sacerdote asigna al catequista 20 (capilla 1)",
+  "resultado_esperado": "HTTP 200 con el catequista asignado",
+  "criterio_aceptacion": "El Sacerdote asigna catequista a cada inscrito",
+  "resultado_obtenido": "HTTP 200; id_catequista=20",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T19:04:49.004Z",
+  "version_codigo": "ZIP SHA-256 d1cd257b1c7f461ace63e955fcc6d441536e6635604417bc56643e40a3602ba1",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "PUT",
+      "ruta": "/api/inscritos-catequesis/51",
+      "cuerpo": {
+        "estado": "Activo",
+        "id_catequista": 20,
+        "nota": "Asignación CP-CAT-17"
+      },
+      "status": 200,
+      "ms": 14,
+      "respuesta": {
+        "mensaje": "Inscrito actualizado correctamente",
+        "inscrito": {
+          "id_inscrito": 51,
+          "id_inscripcion": null,
+          "cedula": "0710889320",
+          "nombres": "Participante De Prueba",
+          "nivel": "Primera Comunion",
+          "id_capilla": 1,
+          "id_catequista": 20,
+          "fecha_inscripcion": "2026-10-30T05:00:00.000Z",
+          "monto": "5.00",
+          "comprobante": "comprobante-prueba.png",
+          "estado": "Activo"
+        }
+      }
+    }
+  ]
+}

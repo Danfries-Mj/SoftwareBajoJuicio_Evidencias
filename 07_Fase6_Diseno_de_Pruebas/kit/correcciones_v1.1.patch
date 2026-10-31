@@ -1,0 +1,101 @@
+diff -ru a/backend/src/controllers/donaciones.controller.js b/backend/src/controllers/donaciones.controller.js
+--- a/backend/src/controllers/donaciones.controller.js	2026-10-23 00:03:10.056966598 -0500
++++ b/backend/src/controllers/donaciones.controller.js	2026-10-23 00:03:10.126002103 -0500
+@@ -114,6 +114,13 @@
+             });
+         }
+ 
++        // DEF-01: solo una donación Pendiente puede aprobarse (evita ingresos duplicados).
++        if (donacionActual.estado !== 'Pendiente') {
++            return res.status(409).json({
++                mensaje: `La donación ya fue resuelta (estado: ${donacionActual.estado})`
++            });
++        }
++
+         const donacion = await aprobarDonacionService(id, req.usuario.id_usuario);
+ 
+         await crearNotificacionService(
+@@ -152,6 +159,13 @@
+             });
+         }
+ 
++        // DEF-01: solo una donación Pendiente puede rechazarse.
++        if (donacionActual.estado !== 'Pendiente') {
++            return res.status(409).json({
++                mensaje: `La donación ya fue resuelta (estado: ${donacionActual.estado})`
++            });
++        }
++
+         const donacion = await rechazarDonacionService(id, req.usuario.id_usuario);
+ 
+         await crearNotificacionService(
+diff -ru a/backend/src/database/connection.js b/backend/src/database/connection.js
+--- a/backend/src/database/connection.js	2026-10-23 00:03:10.058268790 -0500
++++ b/backend/src/database/connection.js	2026-10-23 00:03:10.126232456 -0500
+@@ -1,15 +1,20 @@
+-import pg from 'pg';
+-import { dbConfig } from '../config/db.config.js';
+-
+-const { Pool } = pg;
+-
+-export const pool = new Pool(dbConfig);
+-
+-export const verificarConexion = async() => {
+-    try {
+-        await pool.query('SELECT NOW()');
+-        console.log('Conectado a PostgreSQL');
+-    } catch (error) {
+-        console.error('Error al conectar con PostgreSQL:', error.message);
+-    }
++import pg from 'pg';
++import { dbConfig } from '../config/db.config.js';
++
++const { Pool } = pg;
++
++export const pool = new Pool(dbConfig);
++
++// DEF-19: sin este manejador, un corte de la BD emite un evento 'error' no manejado y el proceso termina.
++pool.on('error', (error) => {
++    console.error('Conexión con PostgreSQL interrumpida; el pool se reconectará en la siguiente consulta:', error.message);
++});
++
++export const verificarConexion = async() => {
++    try {
++        await pool.query('SELECT NOW()');
++        console.log('Conectado a PostgreSQL');
++    } catch (error) {
++        console.error('Error al conectar con PostgreSQL:', error.message);
++    }
+ };
+\ No newline at end of file
+diff -ru a/backend/src/services/inscripcionesCatequesis.service.js b/backend/src/services/inscripcionesCatequesis.service.js
+--- a/backend/src/services/inscripcionesCatequesis.service.js	2026-10-23 00:03:10.064771446 -0500
++++ b/backend/src/services/inscripcionesCatequesis.service.js	2026-10-23 00:03:10.126143679 -0500
+@@ -10,6 +10,7 @@
+ import { obtenerUsuarioPorIdRepository } from '../repositories/usuarios.repository.js';
+ 
+ const NIVELES_VALIDOS = ['Primera Comunion', 'Confirmacion'];
++const MONTO_INSCRIPCION = 5.00;
+ 
+ export const obtenerInscripcionesService = async(filtros) => {
+     return await obtenerInscripcionesRepository(filtros);
+@@ -20,6 +21,10 @@
+ };
+ 
+ export const crearInscripcionService = async(datos) => {
++    // DEF-02: el pago de catequesis es fijo; no se acepta otro monto enviado por el cliente.
++    if (datos.monto !== undefined && datos.monto !== null && Number(datos.monto) !== MONTO_INSCRIPCION) {
++        throw new Error(`El monto de la inscripción debe ser $${MONTO_INSCRIPCION.toFixed(2)}`);
++    }
+     if (!NIVELES_VALIDOS.includes(datos.nivel)) {
+         throw new Error(`Nivel inválido. Niveles permitidos: ${NIVELES_VALIDOS.join(', ')}`);
+     }
+@@ -46,7 +51,7 @@
+         id_laico: datos.id_laico,
+         nivel: datos.nivel,
+         id_capilla: datos.id_capilla,
+-        monto: datos.monto || 5.00,
++        monto: MONTO_INSCRIPCION,
+         id_documento: datos.id_documento
+     });
+ };

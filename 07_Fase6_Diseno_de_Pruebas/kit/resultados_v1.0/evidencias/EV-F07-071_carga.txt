@@ -1,0 +1,15 @@
+﻿CP-GEN-05 | 2026-10-30T19:05:34.130Z | http://localhost:3000 | 20 usuarios simultáneos durante 30 s
+Entorno: Node v24.14.1, Windows_NT 10.0.19045, CPU Intel(R) Core(TM) i7-7600U CPU @ 2.80GHz x4, RAM 15.9 GB
+┌────────────────────┬────────┐
+│ (index)            │ Values │
+├────────────────────┼────────┤
+│ peticiones         │ 14605  │
+│ por_segundo        │ 486.8  │
+│ promedio_ms        │ 41     │
+│ p95_ms             │ 81.4   │
+│ p99_ms             │ 103.7  │
+│ maximo_ms          │ 311.2  │
+│ errores            │ 0      │
+│ porcentaje_errores │ 0      │
+└────────────────────┴────────┘
+Criterio (P): promedio < 500 ms, p95 < 1000 ms, 0 errores → PASA

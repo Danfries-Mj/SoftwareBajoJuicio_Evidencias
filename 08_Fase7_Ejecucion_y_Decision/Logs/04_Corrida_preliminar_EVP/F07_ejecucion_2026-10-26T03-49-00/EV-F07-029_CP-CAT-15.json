@@ -1,0 +1,45 @@
+{
+  "evidencia": "EV-F07-029",
+  "caso": "CP-CAT-15",
+  "requisito_o_riesgo": "RF-CAT-07",
+  "tecnica": "Partición de equivalencia (aprobación por Coordinador de la capilla)",
+  "enfoque": "Validación",
+  "precondicion": "Inscripción pendiente 23 de la capilla 1",
+  "datos": "Coordinador de la capilla 1 la acepta",
+  "resultado_esperado": "HTTP 200, estado Aprobada",
+  "criterio_aceptacion": "El Coordinador acepta la catequesis de su capilla",
+  "resultado_obtenido": "HTTP 200; estado=Aprobada",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-26T03:49:12.077Z",
+  "version_codigo": "ZIP SHA-256 27d59d5118638e883d7331a60dfad602077290a3088ac1474b09d356a71a5156",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "PUT",
+      "ruta": "/api/inscripciones-catequesis/23/aprobar",
+      "status": 200,
+      "ms": 12,
+      "respuesta": {
+        "mensaje": "Solicitud de inscripción aprobada correctamente",
+        "inscripcion": {
+          "id_inscripcion": 23,
+          "id_laico": 6,
+          "nivel": "Confirmacion",
+          "id_capilla": 1,
+          "monto": "5.00",
+          "pago_confirmado": true,
+          "fecha_solicitud": "2026-10-26T03:49:11.900Z",
+          "estado": "Aprobada",
+          "id_revisor": 3,
+          "id_documento": 95
+        }
+      }
+    }
+  ]
+}

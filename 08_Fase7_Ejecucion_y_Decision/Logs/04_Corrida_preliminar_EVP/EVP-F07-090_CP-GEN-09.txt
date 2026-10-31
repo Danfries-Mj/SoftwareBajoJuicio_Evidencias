@@ -1,0 +1,15 @@
+CP-GEN-09 | 2026-10-26T13:57:06.168Z | http://localhost:3001 | 500 usuarios simultáneos durante 30 s
+Entorno: Node v22.22.0, Linux 6.18.44-fc-v153, CPU Intel(R) Xeon(R) Processor @ 2.10GHz x2, RAM 7.8 GB
+┌────────────────────┬────────┐
+│ (index)            │ Values │
+├────────────────────┼────────┤
+│ peticiones         │ 48587  │
+│ por_segundo        │ 1619.6 │
+│ promedio_ms        │ 309.7  │
+│ p95_ms             │ 405.9  │
+│ p99_ms             │ 542.2  │
+│ maximo_ms          │ 702.9  │
+│ errores            │ 0      │
+│ porcentaje_errores │ 0      │
+└────────────────────┴────────┘
+Criterio (P): errores < 5 % y el servidor sigue respondiendo → PASA

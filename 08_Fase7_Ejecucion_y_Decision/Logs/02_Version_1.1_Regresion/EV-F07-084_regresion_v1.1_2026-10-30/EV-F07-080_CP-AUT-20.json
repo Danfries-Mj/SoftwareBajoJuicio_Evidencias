@@ -1,0 +1,54 @@
+{
+  "evidencia": "EV-F07-080",
+  "caso": "CP-AUT-20",
+  "requisito_o_riesgo": "RF-AUT-07; RNF-AUT-02",
+  "tecnica": "Partición de equivalencia (correo sin usuario)",
+  "enfoque": "Verificación",
+  "precondicion": "Ninguna",
+  "datos": "Correo \"@hola.com\" enviado directo a la API",
+  "resultado_esperado": "HTTP 400",
+  "criterio_aceptacion": "Solo se aceptan correos con formato válido (P)",
+  "resultado_obtenido": "HTTP 201: Registro exitoso, ya puede iniciar sesión",
+  "estado": "FALLA",
+  "fecha_hora": "2026-10-30T22:39:32.636Z",
+  "version_codigo": "v1.1 (parche 657d4354)",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/auth/registro",
+      "cuerpo": {
+        "cedula": "0719726051",
+        "nombres": "Prueba",
+        "apellidos": "Correo",
+        "correo": "@hola.com",
+        "contrasena": "Ab1.xyzw",
+        "id_capilla": 1
+      },
+      "status": 201,
+      "ms": 93,
+      "respuesta": {
+        "mensaje": "Registro exitoso, ya puede iniciar sesión",
+        "usuario": {
+          "rol": "Laico",
+          "activo": true,
+          "cedula": "0719726051",
+          "correo": "@hola.com",
+          "nombres": "Prueba",
+          "telefono": null,
+          "apellidos": "Correo",
+          "id_capilla": 1,
+          "id_persona": 60,
+          "id_usuario": 36,
+          "fecha_registro": "2026-10-30T17:39:32.619598"
+        }
+      }
+    }
+  ]
+}

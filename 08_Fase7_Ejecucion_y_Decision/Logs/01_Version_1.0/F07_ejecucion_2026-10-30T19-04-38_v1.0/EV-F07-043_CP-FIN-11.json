@@ -1,0 +1,53 @@
+{
+  "evidencia": "EV-F07-043",
+  "caso": "CP-FIN-11",
+  "requisito_o_riesgo": "RF-FIN-06; RSK-04",
+  "tecnica": "Partición de equivalencia (fecha dentro de un mes cerrado)",
+  "enfoque": "Verificación",
+  "precondicion": "Mes 1/2025 cerrado (CP-FIN-10)",
+  "datos": "Ingreso de $1 con fecha 2025-01-15",
+  "resultado_esperado": "HTTP 400/409 (criterio propuesto)",
+  "criterio_aceptacion": "El historial de cierres no se altera (HU-16) (P)",
+  "resultado_obtenido": "HTTP 201",
+  "estado": "FALLA",
+  "fecha_hora": "2026-10-30T19:04:49.263Z",
+  "version_codigo": "ZIP SHA-256 d1cd257b1c7f461ace63e955fcc6d441536e6635604417bc56643e40a3602ba1",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/movimientos-financieros",
+      "cuerpo": {
+        "tipo": "Ingreso",
+        "categoria": "Prueba",
+        "descripcion": "Caso de prueba",
+        "id_fondo": 4,
+        "monto": 1,
+        "fecha": "2025-01-15",
+        "justificacion": "Kit de evidencias"
+      },
+      "status": 201,
+      "ms": 10,
+      "respuesta": {
+        "mensaje": "Movimiento financiero registrado correctamente",
+        "movimiento": {
+          "id_movimiento": 130,
+          "tipo": "Ingreso",
+          "categoria": "Prueba",
+          "descripcion": "Caso de prueba",
+          "id_fondo": 4,
+          "monto": "1.00",
+          "fecha": "2025-01-15T05:00:00.000Z",
+          "justificacion": "Kit de evidencias",
+          "registrado_por": 19
+        }
+      }
+    }
+  ]
+}

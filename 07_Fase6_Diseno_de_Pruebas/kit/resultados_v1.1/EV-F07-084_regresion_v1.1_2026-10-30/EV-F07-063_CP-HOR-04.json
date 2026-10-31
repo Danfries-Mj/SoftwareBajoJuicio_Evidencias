@@ -1,0 +1,42 @@
+{
+  "evidencia": "EV-F07-063",
+  "caso": "CP-HOR-04",
+  "requisito_o_riesgo": "RF-HOR-03",
+  "tecnica": "Tabla de decisión (capilla, día y hora iguales)",
+  "enfoque": "Verificación",
+  "precondicion": "Horario de CP-HOR-03",
+  "datos": "El mismo horario otra vez",
+  "resultado_esperado": "HTTP 400",
+  "criterio_aceptacion": "Se rechazan duplicados (HU-01)",
+  "resultado_obtenido": "HTTP 409: Error al crear horario de eucaristía",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T22:39:32.173Z",
+  "version_codigo": "v1.1 (parche 657d4354)",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/eucaristias",
+      "cuerpo": {
+        "id_capilla": 2,
+        "dia_semana": "Sabado",
+        "fecha": "2026-12-19",
+        "hora_inicio": "06:17",
+        "hora_fin": "07:00",
+        "estado": "Programada"
+      },
+      "status": 409,
+      "ms": 3,
+      "respuesta": {
+        "mensaje": "Error al crear horario de eucaristía",
+        "error": "Ya existe un horario de misa activo para esa capilla, día y hora"
+      }
+    }
+  ]
+}

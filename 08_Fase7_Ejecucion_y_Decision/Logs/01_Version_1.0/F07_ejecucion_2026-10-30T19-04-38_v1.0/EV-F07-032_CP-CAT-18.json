@@ -1,0 +1,39 @@
+{
+  "evidencia": "EV-F07-032",
+  "caso": "CP-CAT-18",
+  "requisito_o_riesgo": "RF-CAT-09",
+  "tecnica": "Tabla de decisión R2 (catequista de otra capilla)",
+  "enfoque": "Verificación",
+  "precondicion": "Inscrito 51 de la capilla 1",
+  "datos": "Sacerdote asigna al catequista 7 (capilla 2)",
+  "resultado_esperado": "HTTP 400",
+  "criterio_aceptacion": "El catequista asignado pertenece a la capilla del inscrito",
+  "resultado_obtenido": "HTTP 400: El catequista no pertenece a la capilla de este inscrito",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T19:04:49.020Z",
+  "version_codigo": "ZIP SHA-256 d1cd257b1c7f461ace63e955fcc6d441536e6635604417bc56643e40a3602ba1",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "PUT",
+      "ruta": "/api/inscritos-catequesis/51",
+      "cuerpo": {
+        "estado": "Activo",
+        "id_catequista": 7,
+        "nota": "Asignación CP-CAT-18"
+      },
+      "status": 400,
+      "ms": 10,
+      "respuesta": {
+        "mensaje": "El catequista no pertenece a la capilla de este inscrito",
+        "error": "El catequista no pertenece a la capilla de este inscrito"
+      }
+    }
+  ]
+}

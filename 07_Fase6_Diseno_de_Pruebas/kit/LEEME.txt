@@ -1,0 +1,82 @@
+﻿KIT DE EVIDENCIAS - Auditoría del Sistema de Gestión Parroquial
+================================================================
+Requisitos: PostgreSQL 18, Node.js 18 o superior, PowerShell. Sin dependencias extra.
+Los códigos EV de este archivo son los mismos de la Tabla 66 del informe final.
+
+UBICACIÓN EN EL REPOSITORIO (30-oct-2026)
+- Este kit solo contiene los scripts. El ZIP del código, el dump y la ficha están en 01_Fase1_Expediente:
+    -Zip  "..\..\01_Fase1_Expediente\01.1_Codigo\Narcisa de Jesús.zip"
+    -Dump "..\..\01_Fase1_Expediente\01.2_BD\SyS-Backup_2.0.sql"
+    -Ficha "..\..\01_Fase1_Expediente\01.3_Ficha_Tecnica\PROYECTO_HEMI1_IS1_FINAL.pdf"
+- Las salidas de cada corrida se guardan en 08_Fase7_Ejecucion_y_Decision\Logs (01_Version_1.0, 02_Version_1.1_Regresion,
+  03_Cambio_inesperado_SC-01 y 04_Corrida_preliminar_EVP); las del expediente, en 01_Fase1_Expediente y 07_Fase6_Diseno_de_Pruebas\Logs.
+
+0. EXPEDIENTE (hashes e instalación) - script nuevo del 30-oct-2026
+     .\00_registro_expediente.ps1 -Zip "..\SyS.zip" -Dump "..\SyS-Backup_2.0" -Ejecutor "Su nombre"
+     (opcional: -Ficha "..\PROYECTO_HEMI1_IS1_FINAL.pdf"  y  -Frontend)
+   Genera en evidencias\expediente:
+     EV-F01-001_hash_ZIP_codigo.txt, EV-F01-002_hash_dump_BD.txt y EV-F06-001_instalacion.txt
+     (con -Ficha, también EV-F01-003_hash_ficha_tecnica_PDF.txt)
+   Cada archivo dice si el hash COINCIDE con el del informe. Si PowerShell bloquea el script:
+     powershell -ExecutionPolicy Bypass -File .\00_registro_expediente.ps1 -Zip ... -Dump ... -Ejecutor ...
+
+ORDEN DE EJECUCIÓN DE LAS PRUEBAS (PowerShell, desde esta carpeta)
+1. Restaurar la BD dos veces:
+     psql -U postgres -c "CREATE DATABASE sys_original"
+     psql -U postgres -d sys_original -f ..\SyS-Backup_2.0
+     psql -U postgres -c "CREATE DATABASE sys_pruebas TEMPLATE sys_original"
+     psql -U postgres -d sys_pruebas -f 01_preparar_bd_pruebas.sql
+2. Backend apuntando a sys_pruebas (.env de pruebas, sin credenciales reales):
+     npm install ; npm start
+3. Evidencias de la versión 1.0:
+     node 03_analisis_estatico.mjs "..\SyS" > EV-F03-001_analisis_estatico.txt
+     psql -U postgres -d sys_original -f 02_pruebas_bd.sql -o EV-F07-069_pruebas_bd.txt
+     $env:BACKEND="..\SyS\backend"; node --test --experimental-test-coverage pruebas_unidad.test.mjs > EV-F07-070_unidad.txt
+     $env:BASE_URL="http://localhost:3000"; $env:EJECUTOR="Su nombre"; node pruebas_api.mjs
+       -> carpeta evidencias\F07_ejecucion_<fecha>  (EV-F07-001 a 068 y 080 a 083)
+     node pruebas_carga.mjs > EV-F07-071_carga.txt
+     $env:CONCURRENCIA="100"; $env:CASO="CP-GEN-06"; node pruebas_carga.mjs > EV-F07-072_estres.txt
+     Prueba de recuperación v1.0 (script nuevo; PowerShell como administrador):
+       Get-Service *postgres*
+       $env:SERVICIO="postgresql-x64-18"; $env:VERSION_CODIGO="v1.0"; $env:EV="EV-F07-073"
+       node pruebas_recuperacion.mjs | Out-File -Encoding utf8 EV-F07-073_CP-GEN-07_v1.0.txt
+     (pruebas_api.mjs ejecuta 72 casos, incluidos CP-AUT-20 a 23: correo, contraseña e intentos fallidos)
+
+4. Versión 1.1 (después de terminar la 1.0):
+     Copiar la carpeta SyS a SyS_v11 y, desde SyS_v11:
+     git apply --check ..\kit\correcciones_v1.1.patch
+     git apply ..\kit\correcciones_v1.1.patch
+     (sin Git: copiar v1.1_archivos\* sobre SyS_v11\backend\src\)
+     Recrear sys_pruebas, levantar el backend de SyS_v11 y repetir:
+     $env:VERSION_CODIGO="v1.1 (parche 657d4354)"; node pruebas_api.mjs
+       -> al terminar, renombrar la carpeta creada a EV-F07-084_regresion_v1.1_<fecha>
+          (los JSON de adentro se llaman igual que en la v1.0; la carpeta es la que identifica la versión)
+     Prueba de recuperación v1.1 (PowerShell como administrador):
+       $env:SERVICIO="postgresql-x64-18"; $env:VERSION_CODIGO="v1.1 (parche 657d4354)"; $env:EV="EV-F07-085"
+       node pruebas_recuperacion.mjs | Out-File -Encoding utf8 EV-F07-085_CP-GEN-07_v1.1.txt
+
+IMPORTANTE
+- pruebas_api.mjs crea datos: ejecútelo solo contra sys_pruebas.
+- Para repetirlo, recree sys_pruebas desde sys_original y vuelva a ejecutar 01_preparar_bd_pruebas.sql.
+  Si no la recrea, quedan datos de la corrida anterior y algunos casos salen BLOQUEADO.
+- No suba backend/.env ni el dump completo al repositorio (credenciales y datos personales).
+- Antes de cada corrida limpie las variables de la corrida anterior, por ejemplo:
+  Remove-Item Env:SERVICIO, Env:CONCURRENCIA, Env:CASO -ErrorAction SilentlyContinue
+
+5. Cambio inesperado SC-01 (sección 10 del informe). Backend v1.1 (SyS_v11) y sys_pruebas recreada:
+     $env:CONCURRENCIA="500"; $env:CASO="CP-GEN-09"; node pruebas_carga.mjs | Out-File -Encoding utf8 EV-F07-090_CP-GEN-09.txt
+     $env:VERSION_CODIGO="v1.1 (parche 657d4354)"; node pruebas_cambio.mjs | Out-File -Encoding utf8 EV-F07-091_CP-GEN-10_CP-FIN-23.txt
+   (pruebas_cambio.mjs ejecuta CP-FIN-23: 20 aprobaciones simultáneas de la misma donación,
+    y CP-GEN-10: 100 usuarios autenticados de Tesorería durante 30 s)
+   CP-GEN-11 (caída de la BD con carga, EV-F07-092): en una ventana ejecute
+     $env:CONCURRENCIA="100"; $env:DURACION="75"; $env:CASO="CP-GEN-08"; node pruebas_carga.mjs
+   y en otra, al mismo tiempo (como administrador):
+     $env:SERVICIO="postgresql-x64-18"; $env:VERSION_CODIGO="v1.1 (parche 657d4354)"; $env:EV="EV-F07-092"
+     node pruebas_recuperacion.mjs | Out-File -Encoding utf8 EV-F07-092_CP-GEN-11_caida_con_carga_v1.1.txt
+
+CAMBIOS DE ESTA VERSIÓN DEL KIT (30-oct-2026)
+- Se agregaron 00_registro_expediente.ps1 y pruebas_recuperacion.mjs.
+- Se corrigieron los nombres de salida del paso 5 para que coincidan con la Tabla 66
+  (EV-F07-090 = CP-GEN-09; EV-F07-091 = CP-GEN-10 y CP-FIN-23).
+- Se quitó la referencia al plan de 4 días.
+- Los scripts usados en las corridas del 25 y 26 de octubre no se modificaron.

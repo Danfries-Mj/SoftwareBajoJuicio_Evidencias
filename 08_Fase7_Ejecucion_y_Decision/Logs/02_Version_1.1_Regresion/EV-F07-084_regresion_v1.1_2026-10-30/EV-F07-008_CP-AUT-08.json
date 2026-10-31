@@ -1,0 +1,55 @@
+{
+  "evidencia": "EV-F07-008",
+  "caso": "CP-AUT-08",
+  "requisito_o_riesgo": "RF-AUT-03; RF-AUT-04",
+  "tecnica": "Tabla de decisión (rol × acción: crear usuario)",
+  "enfoque": "Validación",
+  "precondicion": "Sesión de Sacerdote",
+  "datos": "Usuario nuevo, rol Catequista, capilla 1",
+  "resultado_esperado": "HTTP 201 con rol y capilla asignados",
+  "criterio_aceptacion": "Usuario creado con rol y capilla",
+  "resultado_obtenido": "HTTP 201; rol=Catequista; capilla=1",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T22:39:22.091Z",
+  "version_codigo": "v1.1 (parche 657d4354)",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/usuarios",
+      "cuerpo": {
+        "cedula": "0719620122",
+        "nombres": "Prueba",
+        "apellidos": "Usuario 13",
+        "correo": "usuario13.1793399961999@prueba.test",
+        "contrasena": "Ab1.xyzw",
+        "rol": "Catequista",
+        "id_capilla": 1
+      },
+      "status": 201,
+      "ms": 92,
+      "respuesta": {
+        "mensaje": "Usuario creado correctamente",
+        "usuario": {
+          "rol": "Catequista",
+          "activo": true,
+          "cedula": "0719620122",
+          "correo": "usuario13.1793399961999@prueba.test",
+          "nombres": "Prueba",
+          "telefono": null,
+          "apellidos": "Usuario 13",
+          "id_capilla": 1,
+          "id_persona": 59,
+          "id_usuario": 35,
+          "fecha_registro": "2026-10-30T17:39:22.07882"
+        }
+      }
+    }
+  ]
+}

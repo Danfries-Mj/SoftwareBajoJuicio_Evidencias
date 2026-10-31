@@ -1,0 +1,45 @@
+{
+  "evidencia": "EV-F07-061",
+  "caso": "CP-HOR-02",
+  "requisito_o_riesgo": "RF-HOR-02; RNF-AUT-02",
+  "tecnica": "Tabla de decisión (rol × acción)",
+  "enfoque": "Verificación (seguridad)",
+  "precondicion": "Sesión de Laico",
+  "datos": "POST /api/eucaristias",
+  "resultado_esperado": "HTTP 403",
+  "criterio_aceptacion": "Solo el Sacerdote gestiona horarios",
+  "resultado_obtenido": "HTTP 403",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T19:04:49.536Z",
+  "version_codigo": "ZIP SHA-256 d1cd257b1c7f461ace63e955fcc6d441536e6635604417bc56643e40a3602ba1",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/eucaristias",
+      "cuerpo": {
+        "id_capilla": 2,
+        "dia_semana": "Sabado",
+        "fecha": "2026-12-19",
+        "hora_inicio": "06:17",
+        "hora_fin": "07:00",
+        "estado": "Programada"
+      },
+      "status": 403,
+      "ms": 2,
+      "respuesta": {
+        "mensaje": "No tiene permisos para realizar esta acción",
+        "rolesPermitidos": [
+          "Sacerdote"
+        ],
+        "rolActual": "Laico"
+      }
+    }
+  ]
+}

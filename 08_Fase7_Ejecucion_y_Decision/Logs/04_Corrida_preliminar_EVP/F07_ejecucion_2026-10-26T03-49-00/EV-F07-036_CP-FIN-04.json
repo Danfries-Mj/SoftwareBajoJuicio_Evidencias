@@ -1,0 +1,107 @@
+{
+  "evidencia": "EV-F07-036",
+  "caso": "CP-FIN-04",
+  "requisito_o_riesgo": "RF-FIN-02; RNF-FIN-02; RSK-04",
+  "tecnica": "Transición de estados (Aprobado → Rechazado → Aprobado)",
+  "enfoque": "Verificación",
+  "precondicion": "Donación nueva de $50 pendiente",
+  "datos": "Aprobar, rechazar y volver a aprobar",
+  "resultado_esperado": "Saldo final = saldo inicial + $50 (una sola vez)",
+  "criterio_aceptacion": "Una donación suma al fondo una sola vez",
+  "resultado_obtenido": "HTTP 200/200/200; saldo 5 → 105 (Δ 100.00)",
+  "estado": "FALLA",
+  "fecha_hora": "2026-10-26T03:49:12.270Z",
+  "version_codigo": "ZIP SHA-256 27d59d5118638e883d7331a60dfad602077290a3088ac1474b09d356a71a5156",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/donaciones",
+      "cuerpo": {
+        "id_capilla": 1,
+        "fecha": "2026-10-25",
+        "monto": 50,
+        "id_documento": 96,
+        "id_fondo": 2
+      },
+      "status": 201,
+      "ms": 9,
+      "respuesta": {
+        "mensaje": "Donación registrada correctamente, queda pendiente de validación",
+        "donacion": {
+          "id_donacion": 30,
+          "id_usuario": 2,
+          "id_capilla": 1,
+          "fecha": "2026-10-25T05:00:00.000Z",
+          "monto": "50.00",
+          "estado": "Pendiente",
+          "id_documento": 96,
+          "id_fondo": 2
+        }
+      }
+    },
+    {
+      "metodo": "PUT",
+      "ruta": "/api/donaciones/30/aprobar",
+      "status": 200,
+      "ms": 11,
+      "respuesta": {
+        "mensaje": "Donación aprobada correctamente",
+        "donacion": {
+          "id_donacion": 30,
+          "id_usuario": 2,
+          "id_capilla": 1,
+          "fecha": "2026-10-25T05:00:00.000Z",
+          "monto": "50.00",
+          "estado": "Aprobado",
+          "id_documento": 96,
+          "id_fondo": 2
+        }
+      }
+    },
+    {
+      "metodo": "PUT",
+      "ruta": "/api/donaciones/30/rechazar",
+      "status": 200,
+      "ms": 11,
+      "respuesta": {
+        "mensaje": "Donación rechazada correctamente",
+        "donacion": {
+          "id_donacion": 30,
+          "id_usuario": 2,
+          "id_capilla": 1,
+          "fecha": "2026-10-25T05:00:00.000Z",
+          "monto": "50.00",
+          "estado": "Rechazado",
+          "id_documento": 96,
+          "id_fondo": 2
+        }
+      }
+    },
+    {
+      "metodo": "PUT",
+      "ruta": "/api/donaciones/30/aprobar",
+      "status": 200,
+      "ms": 13,
+      "respuesta": {
+        "mensaje": "Donación aprobada correctamente",
+        "donacion": {
+          "id_donacion": 30,
+          "id_usuario": 2,
+          "id_capilla": 1,
+          "fecha": "2026-10-25T05:00:00.000Z",
+          "monto": "50.00",
+          "estado": "Aprobado",
+          "id_documento": 96,
+          "id_fondo": 2
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "evidencia": "EV-F07-053",
+  "caso": "CP-SOL-05",
+  "requisito_o_riesgo": "RF-SOL-01",
+  "tecnica": "Partición de equivalencia (solicitud válida de Bautizo)",
+  "enfoque": "Validación",
+  "precondicion": "Sesión de Laico B",
+  "datos": "Bautizo, modalidad Terceros, bautizando nuevo",
+  "resultado_esperado": "HTTP 201, estado Pendiente",
+  "criterio_aceptacion": "Queda pendiente de asignación de fecha",
+  "resultado_obtenido": "HTTP 201; estado=Pendiente",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-26T03:49:12.525Z",
+  "version_codigo": "ZIP SHA-256 27d59d5118638e883d7331a60dfad602077290a3088ac1474b09d356a71a5156",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/solicitudes-sacramento",
+      "cuerpo": {
+        "id_capilla": 1,
+        "id_documento": 95,
+        "sacramento": "Bautizo",
+        "modalidad": "Terceros",
+        "beneficiarios": [
+          {
+            "rol_beneficiario": "Bautizando",
+            "nombres": "Bebé",
+            "apellidos": "De Prueba",
+            "cedula": "0715525630"
+          }
+        ]
+      },
+      "status": 201,
+      "ms": 9,
+      "respuesta": {
+        "mensaje": "Solicitud enviada correctamente, queda pendiente de asignación",
+        "solicitud": {
+          "estado": "Pendiente",
+          "hora_fin": null,
+          "modalidad": "Terceros",
+          "id_capilla": 1,
+          "id_usuario": 2,
+          "sacramento": "Bautizo",
+          "hora_inicio": null,
+          "id_documento": 95,
+          "id_solicitud": 52,
+          "beneficiarios": [
+            {
+              "cedula": "0715525630",
+              "nombres": "Bebé",
+              "telefono": null,
+              "apellidos": "De Prueba",
+              "id_persona": null,
+              "id_solicitud": 52,
+              "id_beneficiario": 29,
+              "rol_beneficiario": "Bautizando"
+            }
+          ],
+          "fecha_asignada": null,
+          "fecha_solicitud": "2026-10-25T22:49:12.525146"
+        }
+      }
+    }
+  ]
+}

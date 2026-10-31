@@ -1,0 +1,52 @@
+{
+  "evidencia": "EV-F07-030",
+  "caso": "CP-CAT-16",
+  "requisito_o_riesgo": "RF-CAT-08",
+  "tecnica": "Partición de equivalencia (registro por el personal)",
+  "enfoque": "Validación",
+  "precondicion": "Sesión de Coordinador de la capilla 1; comprobante existente",
+  "datos": "Inscripción a nombre del laico 6, Primera Comunión",
+  "resultado_esperado": "HTTP 201, estado Pendiente",
+  "criterio_aceptacion": "El Coordinador registra nuevas inscripciones",
+  "resultado_obtenido": "HTTP 201: Solicitud de inscripción enviada correctamente, queda pendiente de validación",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T19:04:48.985Z",
+  "version_codigo": "ZIP SHA-256 d1cd257b1c7f461ace63e955fcc6d441536e6635604417bc56643e40a3602ba1",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/inscripciones-catequesis",
+      "cuerpo": {
+        "nivel": "Primera Comunion",
+        "id_capilla": 1,
+        "monto": 5,
+        "id_documento": 94,
+        "id_laico": 6
+      },
+      "status": 201,
+      "ms": 10,
+      "respuesta": {
+        "mensaje": "Solicitud de inscripción enviada correctamente, queda pendiente de validación",
+        "inscripcion": {
+          "id_inscripcion": 22,
+          "id_laico": 6,
+          "nivel": "Primera Comunion",
+          "id_capilla": 1,
+          "monto": "5.00",
+          "pago_confirmado": false,
+          "fecha_solicitud": "2026-10-30T19:04:48.983Z",
+          "estado": "Pendiente",
+          "id_revisor": null,
+          "id_documento": 94
+        }
+      }
+    }
+  ]
+}

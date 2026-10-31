@@ -1,0 +1,9 @@
+﻿EV-F01-003 | Huella SHA-256 de ficha_tecnica_PDF
+Fecha y hora de ejecución: 2026-10-30 18:28:17 (UTC-05:00)
+Ejecutor: Roberto Loayza | Equipo: DESKTOP-9F1O1KN
+Archivo: PROYECTO_HEMI1_IS1_FINAL.pdf
+Tamaño: 2073891 bytes
+Última modificación del archivo: 2026-10-25 00:19:13
+Algoritmo: SHA256
+Hash: 6C0B962463C89AB3C1B00E2EB8342D53B65363611AC4349B7CE1CE2A56B37A33
+Resultado: COINCIDE con el informe

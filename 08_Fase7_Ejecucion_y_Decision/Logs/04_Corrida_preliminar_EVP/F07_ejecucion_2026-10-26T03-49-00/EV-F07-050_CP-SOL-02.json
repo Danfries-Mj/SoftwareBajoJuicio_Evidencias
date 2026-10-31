@@ -1,0 +1,40 @@
+{
+  "evidencia": "EV-F07-050",
+  "caso": "CP-SOL-02",
+  "requisito_o_riesgo": "RF-SOL-03",
+  "tecnica": "Tabla de decisión R2 (Primera Comunión con Bautismo)",
+  "enfoque": "Validación",
+  "precondicion": "Laico con Bautismo emitido (fernando.salazarcabrera@gmail.com)",
+  "datos": "Primera Comunión, modalidad Propia",
+  "resultado_esperado": "HTTP 201, estado Pendiente",
+  "criterio_aceptacion": "Se acepta si cumple el prerrequisito",
+  "resultado_obtenido": "HTTP 400; estado=-",
+  "estado": "FALLA",
+  "fecha_hora": "2026-10-26T03:49:12.442Z",
+  "version_codigo": "ZIP SHA-256 27d59d5118638e883d7331a60dfad602077290a3088ac1474b09d356a71a5156",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/solicitudes-sacramento",
+      "cuerpo": {
+        "id_capilla": 1,
+        "id_documento": 95,
+        "sacramento": "Primera Comunion",
+        "modalidad": "Propia"
+      },
+      "status": 400,
+      "ms": 15,
+      "respuesta": {
+        "mensaje": "Ya existe una solicitud de Primera Comunion pendiente para este usuario en esta capilla",
+        "error": "Ya existe una solicitud de Primera Comunion pendiente para este usuario en esta capilla"
+      }
+    }
+  ]
+}

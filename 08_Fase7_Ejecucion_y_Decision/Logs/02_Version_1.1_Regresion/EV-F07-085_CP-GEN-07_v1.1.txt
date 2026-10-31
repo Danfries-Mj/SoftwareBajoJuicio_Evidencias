@@ -1,0 +1,87 @@
+﻿CP-GEN-07 | EV-F07-085 | 2026-10-30T22:43:40.483Z | http://localhost:3000/api/eucaristias | versión: v1.1 (parche 657d4354)
+Entorno: Node v24.14.1, Windows_NT 10.0.19045, CPU Intel(R) Core(TM) i7-7600U CPU @ 2.80GHz x4
+Plan: PostgreSQL se detiene en t=10 s y se inicia en t=40 s; observación total 75 s.
+Servicio controlado por el script: postgresql-x64-18
+
+[17:43:40] t=  0s  antes    HTTP 200
+[17:43:41] t=  1s  antes    HTTP 200
+[17:43:42] t=  2s  antes    HTTP 200
+[17:43:43] t=  3s  antes    HTTP 200
+[17:43:44] t=  4s  antes    HTTP 200
+[17:43:45] t=  5s  antes    HTTP 200
+[17:43:46] t=  6s  antes    HTTP 200
+[17:43:47] t=  7s  antes    HTTP 200
+[17:43:48] t=  8s  antes    HTTP 200
+[17:43:49] t=  9s  antes    HTTP 200
+[17:43:50] t=10s  >>> net stop "postgresql-x64-18" -> correcto
+[17:43:53] t= 10s  caida    HTTP 500
+[17:43:54] t= 14s  caida    HTTP 500
+[17:43:55] t= 15s  caida    HTTP 500
+[17:43:56] t= 16s  caida    HTTP 500
+[17:43:57] t= 17s  caida    HTTP 500
+[17:43:58] t= 18s  caida    HTTP 500
+[17:43:59] t= 19s  caida    HTTP 500
+[17:44:00] t= 20s  caida    HTTP 500
+[17:44:01] t= 21s  caida    HTTP 500
+[17:44:02] t= 22s  caida    HTTP 500
+[17:44:03] t= 23s  caida    HTTP 500
+[17:44:04] t= 24s  caida    HTTP 500
+[17:44:05] t= 25s  caida    HTTP 500
+[17:44:06] t= 26s  caida    HTTP 500
+[17:44:07] t= 27s  caida    HTTP 500
+[17:44:08] t= 28s  caida    HTTP 500
+[17:44:09] t= 29s  caida    HTTP 500
+[17:44:10] t= 30s  caida    HTTP 500
+[17:44:11] t= 31s  caida    HTTP 500
+[17:44:12] t= 32s  caida    HTTP 500
+[17:44:13] t= 33s  caida    HTTP 500
+[17:44:14] t= 34s  caida    HTTP 500
+[17:44:15] t= 35s  caida    HTTP 500
+[17:44:16] t= 36s  caida    HTTP 500
+[17:44:17] t= 37s  caida    HTTP 500
+[17:44:18] t= 38s  caida    HTTP 500
+[17:44:19] t= 39s  caida    HTTP 500
+[17:44:20] t=40s  >>> net start "postgresql-x64-18" -> correcto
+[17:44:23] t= 40s  despues  HTTP 200
+[17:44:24] t= 44s  despues  HTTP 200
+[17:44:25] t= 45s  despues  HTTP 200
+[17:44:26] t= 46s  despues  HTTP 200
+[17:44:27] t= 47s  despues  HTTP 200
+[17:44:28] t= 48s  despues  HTTP 200
+[17:44:29] t= 49s  despues  HTTP 200
+[17:44:30] t= 50s  despues  HTTP 200
+[17:44:31] t= 51s  despues  HTTP 200
+[17:44:32] t= 52s  despues  HTTP 200
+[17:44:33] t= 53s  despues  HTTP 200
+[17:44:34] t= 54s  despues  HTTP 200
+[17:44:35] t= 55s  despues  HTTP 200
+[17:44:36] t= 56s  despues  HTTP 200
+[17:44:37] t= 57s  despues  HTTP 200
+[17:44:38] t= 58s  despues  HTTP 200
+[17:44:39] t= 59s  despues  HTTP 200
+[17:44:40] t= 60s  despues  HTTP 200
+[17:44:41] t= 61s  despues  HTTP 200
+[17:44:42] t= 62s  despues  HTTP 200
+[17:44:43] t= 63s  despues  HTTP 200
+[17:44:44] t= 64s  despues  HTTP 200
+[17:44:45] t= 65s  despues  HTTP 200
+[17:44:46] t= 66s  despues  HTTP 200
+[17:44:47] t= 67s  despues  HTTP 200
+[17:44:48] t= 68s  despues  HTTP 200
+[17:44:49] t= 69s  despues  HTTP 200
+[17:44:50] t= 70s  despues  HTTP 200
+[17:44:51] t= 71s  despues  HTTP 200
+[17:44:52] t= 72s  despues  HTTP 200
+[17:44:53] t= 73s  despues  HTTP 200
+[17:44:54] t= 74s  despues  HTTP 200
+
+┌───────────────────────────────────┬────────────────────────────────────────────────────┐
+│ (index)                           │ Values                                             │
+├───────────────────────────────────┼────────────────────────────────────────────────────┤
+│ respuestas_antes_200              │ '10 de 10'                                         │
+│ durante_la_caida                  │ 'HTTP 500'                                         │
+│ proceso_del_backend_termino       │ 'NO'                                               │
+│ error_controlado_durante_la_caida │ 'SÍ'                                               │
+│ ultimas_5_respuestas              │ 'HTTP 200, HTTP 200, HTTP 200, HTTP 200, HTTP 200' │
+└───────────────────────────────────┴────────────────────────────────────────────────────┘
+Criterio: error controlado durante la caída y servicio restablecido sin reiniciar el backend → PASA

@@ -1,0 +1,31 @@
+{
+  "evidencia": "EV-F07-047",
+  "caso": "CP-FIN-15",
+  "requisito_o_riesgo": "RF-FIN-05",
+  "tecnica": "Partición de equivalencia (filtros de fecha y tipo)",
+  "enfoque": "Validación",
+  "precondicion": "Sesión de Tesorero general",
+  "datos": "tipo=Ingreso, desde 2026-09-30 hasta 2026-10-30",
+  "resultado_esperado": "Solo ingresos dentro del rango",
+  "criterio_aceptacion": "El reporte filtra por fecha y tipo (HU-14)",
+  "resultado_obtenido": "HTTP 200; 1 movimientos; fuera del filtro: 0",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T19:04:49.308Z",
+  "version_codigo": "ZIP SHA-256 d1cd257b1c7f461ace63e955fcc6d441536e6635604417bc56643e40a3602ba1",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "GET",
+      "ruta": "/api/movimientos-financieros?tipo=Ingreso&fecha_desde=2026-09-30&fecha_hasta=2026-10-30",
+      "status": 200,
+      "ms": 4,
+      "respuesta": "[1 registros]"
+    }
+  ]
+}

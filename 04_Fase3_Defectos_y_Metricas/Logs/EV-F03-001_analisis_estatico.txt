@@ -1,0 +1,32 @@
+﻿ANÁLISIS ESTÁTICO | 2026-10-26T03:45:32.146Z | carpeta: C:\P_W\PROYECTO\Proyecto_igle
+
+1. TAMAÑO (líneas físicas, sin node_modules)
+   Backend : 100 archivos .js, 8180 líneas (8.18 KLOC)
+   Frontend: 215 archivos .ts/.html/.css, 17119 líneas (17.12 KLOC)
+
+2. ORGANIZACIÓN POR CAPAS DEL BACKEND (RNF-GEN-04)
+   raíz (app.js)          1
+   config                 3
+   controllers            23
+   database               1
+   middlewares            1
+   repositories           22
+   routes                 23
+   services               25
+   utils                  1
+   Archivos con consultas SQL fuera de repositories: 1 backend/src/database/connection.js
+
+3. NOMBRES DE CAPILLAS ESCRITOS EN EL CÓDIGO (RNF-GEN-03)
+   frontend/src/app/pages/contacto/contacto.html:112  <strong class="d-block">Virgen del Rosario</strong>
+   frontend/src/app/pages/contacto/contacto.html:116  <strong class="d-block">Virgen de Fátima</strong>
+   frontend/src/app/pages/contacto/contacto.html:120  <strong class="d-block">Cristo Liberador</strong>
+   Total de líneas (sin contar comentarios): 3
+
+4. ARCHIVOS .env INCLUIDOS EN EL PAQUETE (DEF-18)
+   backend/.env: 13 variables; con valor sensible: DB_PASSWORD, JWT_SECRET, SMTP_PASS (valores no mostrados)
+
+5. PRUEBAS AUTOMATIZADAS DEL PROYECTO
+   frontend/src/app/app.spec.ts (24 líneas)
+   Total: 1
+
+6. HUELLA SHA-256 DEL CÓDIGO ANALIZADO: f27661c61b172c579b4836dbdb2d3ac67c91b86d19dfd54440f8858af4c6eb51

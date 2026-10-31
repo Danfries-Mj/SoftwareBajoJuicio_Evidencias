@@ -1,0 +1,9 @@
+﻿EV-F01-001 | Huella SHA-256 de ZIP_codigo
+Fecha y hora de ejecución: 2026-10-30 18:28:17 (UTC-05:00)
+Ejecutor: Roberto Loayza | Equipo: DESKTOP-9F1O1KN
+Archivo: Narcisa de Jesús.zip
+Tamaño: 5932343 bytes
+Última modificación del archivo: 2026-10-30 18:03:20
+Algoritmo: SHA256
+Hash: D1CD257B1C7F461ACE63E955FCC6D441536E6635604417BC56643E40A3602BA1
+Resultado: COINCIDE con el informe

@@ -1,0 +1,51 @@
+{
+  "evidencia": "EV-F07-023",
+  "caso": "CP-CAT-09",
+  "requisito_o_riesgo": "RF-CAT-04; RNF-AUT-02",
+  "tecnica": "Tabla de decisión (rol × acción: editar inscrito)",
+  "enfoque": "Verificación (seguridad)",
+  "precondicion": "Existe al menos un inscrito",
+  "datos": "Tesorero general edita el estado de un inscrito",
+  "resultado_esperado": "HTTP 403",
+  "criterio_aceptacion": "El Tesorero solo consulta catequesis",
+  "resultado_obtenido": "HTTP 200",
+  "estado": "FALLA",
+  "fecha_hora": "2026-10-30T22:39:31.607Z",
+  "version_codigo": "v1.1 (parche 657d4354)",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "PUT",
+      "ruta": "/api/inscritos-catequesis/25",
+      "cuerpo": {
+        "estado": "Activo",
+        "id_catequista": 13,
+        "nota": "Prueba CP-CAT-09"
+      },
+      "status": 200,
+      "ms": 11,
+      "respuesta": {
+        "mensaje": "Inscrito actualizado correctamente",
+        "inscrito": {
+          "id_inscrito": 25,
+          "id_inscripcion": null,
+          "cedula": "0705676955",
+          "nombres": "Ana Belén Quinde Aguilar",
+          "nivel": "Confirmacion",
+          "id_capilla": 3,
+          "id_catequista": 13,
+          "fecha_inscripcion": "2026-02-20T05:00:00.000Z",
+          "monto": "5.00",
+          "comprobante": null,
+          "estado": "Activo"
+        }
+      }
+    }
+  ]
+}

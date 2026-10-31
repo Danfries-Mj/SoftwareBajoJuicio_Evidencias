@@ -1,0 +1,33 @@
+{
+  "evidencia": "EV-F07-009",
+  "caso": "CP-AUT-09",
+  "requisito_o_riesgo": "RNF-AUT-02",
+  "tecnica": "Partición de equivalencia (sin credencial)",
+  "enfoque": "Verificación (seguridad)",
+  "precondicion": "Ninguna",
+  "datos": "GET /api/usuarios sin token",
+  "resultado_esperado": "HTTP 401",
+  "criterio_aceptacion": "Acceso denegado sin autenticación",
+  "resultado_obtenido": "HTTP 401",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T19:04:39.794Z",
+  "version_codigo": "ZIP SHA-256 d1cd257b1c7f461ace63e955fcc6d441536e6635604417bc56643e40a3602ba1",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "GET",
+      "ruta": "/api/usuarios",
+      "status": 401,
+      "ms": 1,
+      "respuesta": {
+        "mensaje": "Token de autenticación no proporcionado"
+      }
+    }
+  ]
+}

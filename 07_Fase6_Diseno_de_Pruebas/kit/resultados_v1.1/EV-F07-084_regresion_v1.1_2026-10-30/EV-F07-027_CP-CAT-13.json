@@ -1,0 +1,55 @@
+{
+  "evidencia": "EV-F07-027",
+  "caso": "CP-CAT-13",
+  "requisito_o_riesgo": "RF-CAT-04; RNF-AUT-02",
+  "tecnica": "Tabla de decisión (rol × capilla)",
+  "enfoque": "Verificación (seguridad)",
+  "precondicion": "Sesión de Catequista de la capilla 1",
+  "datos": "Nuevo inscrito en la capilla 2",
+  "resultado_esperado": "HTTP 403",
+  "criterio_aceptacion": "El catequista accede solo a su capilla (HU-03)",
+  "resultado_obtenido": "HTTP 201: Inscrito registrado correctamente",
+  "estado": "FALLA",
+  "fecha_hora": "2026-10-30T22:39:31.641Z",
+  "version_codigo": "v1.1 (parche 657d4354)",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/inscritos-catequesis",
+      "cuerpo": {
+        "cedula": "0719716490",
+        "nombres": "Participante De Prueba",
+        "nivel": "Primera Comunion",
+        "id_capilla": 2,
+        "fecha_inscripcion": "2026-10-30",
+        "monto": 5,
+        "comprobante": "comprobante-prueba.png"
+      },
+      "status": 201,
+      "ms": 8,
+      "respuesta": {
+        "mensaje": "Inscrito registrado correctamente",
+        "inscrito": {
+          "id_inscrito": 52,
+          "id_inscripcion": null,
+          "cedula": "0719716490",
+          "nombres": "Participante De Prueba",
+          "nivel": "Primera Comunion",
+          "id_capilla": 2,
+          "id_catequista": null,
+          "fecha_inscripcion": "2026-10-30T05:00:00.000Z",
+          "monto": "5.00",
+          "comprobante": "comprobante-prueba.png",
+          "estado": "Pendiente"
+        }
+      }
+    }
+  ]
+}

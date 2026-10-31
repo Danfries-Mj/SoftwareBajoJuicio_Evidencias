@@ -1,0 +1,9 @@
+﻿EV-F01-002 | Huella SHA-256 de dump_BD
+Fecha y hora de ejecución: 2026-10-30 18:28:17 (UTC-05:00)
+Ejecutor: Roberto Loayza | Equipo: DESKTOP-9F1O1KN
+Archivo: SyS-Backup_2.0.sql
+Tamaño: 102917568 bytes
+Última modificación del archivo: 2026-10-30 13:29:11
+Algoritmo: SHA256
+Hash: 5576DDE00E2558984DDA8966883244866F0E75F4A36C5A80C8F47083A552E4AE
+Resultado: COINCIDE con el informe

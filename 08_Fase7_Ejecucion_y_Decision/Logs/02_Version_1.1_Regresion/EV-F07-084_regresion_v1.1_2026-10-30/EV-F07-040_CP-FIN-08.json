@@ -1,0 +1,42 @@
+{
+  "evidencia": "EV-F07-040",
+  "caso": "CP-FIN-08",
+  "requisito_o_riesgo": "RF-FIN-03; RNF-AUT-02",
+  "tecnica": "Tabla de decisión (rol × fondo)",
+  "enfoque": "Verificación (seguridad)",
+  "precondicion": "Sesión de Tesorero de la capilla 1",
+  "datos": "Ingreso de $1 en el fondo de la capilla 2",
+  "resultado_esperado": "HTTP 403",
+  "criterio_aceptacion": "El Tesorero de capilla no opera otros fondos",
+  "resultado_obtenido": "HTTP 403",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T22:39:31.870Z",
+  "version_codigo": "v1.1 (parche 657d4354)",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/movimientos-financieros",
+      "cuerpo": {
+        "tipo": "Ingreso",
+        "categoria": "Prueba",
+        "descripcion": "Caso de prueba",
+        "id_fondo": 3,
+        "monto": 1,
+        "fecha": "2026-10-30",
+        "justificacion": "Kit de evidencias"
+      },
+      "status": 403,
+      "ms": 3,
+      "respuesta": {
+        "mensaje": "No tiene permisos para registrar movimientos en este fondo"
+      }
+    }
+  ]
+}

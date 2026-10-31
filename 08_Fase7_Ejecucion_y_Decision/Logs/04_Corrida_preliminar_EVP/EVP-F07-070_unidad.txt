@@ -1,0 +1,114 @@
+﻿▶ CP-AUT-18 cedulaValida (RF-AUT-07)
+  [32m✔ válida real (provincia 07): "0750625857" → true [90m(1.4648ms)[39m[39m
+  [32m✔ límite inferior de provincia válido (01): "0100000017" → true [90m(0.2129ms)[39m[39m
+  [32m✔ límite superior de provincia válido (24): "2400000010" → true [90m(0.1396ms)[39m[39m
+  [32m✔ tercer dígito 6 (límite válido): "0761234566" → true [90m(0.1653ms)[39m[39m
+  [32m✔ 9 dígitos (longitud bajo el límite): "075062585" → false [90m(0.0809ms)[39m[39m
+  [32m✔ 11 dígitos (longitud sobre el límite): "07506258570" → false [90m(0.1406ms)[39m[39m
+  [32m✔ contiene una letra: "07506258a7" → false [90m(0.0757ms)[39m[39m
+  [32m✔ no es texto (número): 750625857 → false [90m(0.1239ms)[39m[39m
+  [32m✔ provincia 00 (bajo el límite): "0000000000" → false [90m(0.1495ms)[39m[39m
+  [32m✔ provincia 25 (sobre el límite): "2500000000" → false [90m(0.1477ms)[39m[39m
+  [32m✔ tercer dígito 7 (sobre el límite): "0770000000" → false [90m(0.1757ms)[39m[39m
+  [32m✔ dígito verificador incorrecto: "0750625858" → false [90m(0.1547ms)[39m[39m
+[32m✔ CP-AUT-18 cedulaValida (RF-AUT-07) [90m(5.3097ms)[39m[39m
+▶ CP-AUT-19 validarFortalezaContrasena (RF-AUT-07)
+  [32m✔ 8 caracteres con todas las clases (límite válido): "Ab1.xyzw" → aceptada [90m(0.5379ms)[39m[39m
+  [32m✔ 7 caracteres (bajo el límite): "Ab1.xyz" → rechazada [90m(0.3549ms)[39m[39m
+  [32m✔ sin mayúscula: "ab1.xyzw" → rechazada [90m(0.1098ms)[39m[39m
+  [32m✔ sin minúscula: "AB1.XYZW" → rechazada [90m(0.097ms)[39m[39m
+  [32m✔ sin número: "Abc.xyzw" → rechazada [90m(0.0996ms)[39m[39m
+  [32m✔ sin carácter especial: "Ab1xyzwq" → rechazada [90m(0.1155ms)[39m[39m
+[32m✔ CP-AUT-19 validarFortalezaContrasena (RF-AUT-07) [90m(1.5954ms)[39m[39m
+▶ CP-FIN-22 puedeEditarFondo / puedeEditarMovimientoDeFondo (tabla de decisión)
+  [32m✔ R1 Tesorero de capilla 1 → fondo capilla 1 → permitido (RF-FIN-03) [90m(0.3404ms)[39m[39m
+  [32m✔ R2 Tesorero de capilla 1 → fondo capilla 2 → denegado (RF-FIN-03) [90m(0.0937ms)[39m[39m
+  [32m✔ R3 Tesorero general → fondo parroquial → permitido (RF-FIN-03) [90m(0.0546ms)[39m[39m
+  [32m✔ R4 Coordinador de capilla 1 → fondo capilla 1 → permitido (HU-05) [90m(0.0618ms)[39m[39m
+  [31m✖ R5 Coordinador de capilla 1 → fondo capilla 2 → denegado (HU-05) [90m(1.2199ms)[39m[39m
+  [31m✖ R6 Coordinador de capilla 1 → fondo parroquial → denegado (HU-05) [90m(0.1988ms)[39m[39m
+  [32m✔ R7 Sacerdote → fondo capilla 2 → permitido (RF-FIN-08) [90m(0.0799ms)[39m[39m
+  [32m✔ R8 Cualquier rol → fondo inexistente → denegado (RNF-AUT-02) [90m(0.0536ms)[39m[39m
+  [32m✔ R9 Tesorero general edita movimiento de capilla 1 → permitido (RF-FIN-03) [90m(0.1475ms)[39m[39m
+  [32m✔ R10 Tesorero de capilla 2 edita movimiento de capilla 1 → denegado (RF-FIN-03) [90m(0.0911ms)[39m[39m
+  [32m✔ R11 Tesorero general edita movimiento de fondo inexistente → denegado (RNF-AUT-02) [90m(0.1007ms)[39m[39m
+[31m✖ CP-FIN-22 puedeEditarFondo / puedeEditarMovimientoDeFondo (tabla de decisión) [90m(2.9624ms)[39m[39m
+[34mℹ tests 29[39m
+[34mℹ suites 3[39m
+[34mℹ pass 27[39m
+[34mℹ fail 2[39m
+[34mℹ cancelled 0[39m
+[34mℹ skipped 0[39m
+[34mℹ todo 0[39m
+[34mℹ duration_ms 969.0127[39m
+[34mℹ start of coverage report
+ℹ ----------------------------------------------------------------------------------------------------------------------------------------------
+ℹ file                          | [31mline %[34m | [31mbranch %[34m | [31mfuncs %[34m | uncovered lines
+ℹ ----------------------------------------------------------------------------------------------------------------------------------------------
+ℹ ..                            | [31m      [34m | [31m        [34m | [31m       [34m | 
+ℹ  backend                      | [31m      [34m | [31m        [34m | [31m       [34m | 
+ℹ   src                         | [31m      [34m | [31m        [34m | [31m       [34m | 
+ℹ    config                     | [31m      [34m | [31m        [34m | [31m       [34m | 
+ℹ     [32mdb.config.js             [34m | [32m100.00[34m | [32m  100.00[34m | [32m 100.00[34m | 
+ℹ     [33mjwt.config.js            [34m | [33m 83.33[34m | [31m   50.00[34m | [32m 100.00[34m | 6-7
+ℹ     [32mmailer.config.js         [34m | [32m100.00[34m | [32m  100.00[34m | [32m 100.00[34m | 
+ℹ    database                   | [31m      [34m | [31m        [34m | [31m       [34m | 
+ℹ     [33mconnection.js            [34m | [33m 60.00[34m | [32m  100.00[34m | [31m   0.00[34m | 9-14
+ℹ    repositories               | [31m      [34m | [31m        [34m | [31m       [34m | 
+ℹ     [31mauditoria.repository.js  [34m | [31m 17.54[34m | [32m  100.00[34m | [31m   0.00[34m | 4-25 29-48 52-56
+ℹ     [31mfondos.repository.js     [34m | [31m 31.51[34m | [32m  100.00[34m | [31m   0.00[34m | 8-26 30-34 38-42 46-53 57-64 68-72
+ℹ     [31musuarios.repository.js   [34m | [31m 29.37[34m | [32m  100.00[34m | [31m   0.00[34m | 9-35 39-43 47-51 55-61 65-72 76-79 83-86 90-100 104-111 115-120 124-131 135-142
+ℹ    services                   | [31m      [34m | [31m        [34m | [31m       [34m | 
+ℹ     [33mauth.service.js          [34m | [31m 43.97[34m | [32m  100.00[34m | [31m  12.50[34m | 26-27 31 35-40 51-73 77 81-92 96-115
+ℹ     [33mfondos.service.js        [34m | [33m 72.62[34m | [32m  100.00[34m | [31m  25.00[34m | 11-15 37-41 62 66-71 75-79 83
+ℹ     [31mmailer.service.js        [34m | [31m 42.11[34m | [31m   50.00[34m | [31m   0.00[34m | 13-23 27-37
+ℹ    utils                      | [31m      [34m | [31m        [34m | [31m       [34m | 
+ℹ     [32mvalidators.js            [34m | [32m100.00[34m | [32m   93.33[34m | [32m 100.00[34m | 
+ℹ ----------------------------------------------------------------------------------------------------------------------------------------------
+ℹ all files                     | [31m 46.08[34m | [32m   93.48[34m | [31m  10.00[34m | 
+ℹ ----------------------------------------------------------------------------------------------------------------------------------------------
+ℹ end of coverage report
+[39m
+[31m✖ failing tests:[39m
+
+test at pruebas_unidad.test.mjs:87:5
+[31m✖ R5 Coordinador de capilla 1 → fondo capilla 2 → denegado (HU-05) [90m(1.2199ms)[39m[39m
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/P_W/PROYECTO/Proyecto_igle/kit_evidencias/pruebas_unidad.test.mjs:87:88)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at pruebas_unidad.test.mjs:87:5
+[31m✖ R6 Coordinador de capilla 1 → fondo parroquial → denegado (HU-05) [90m(0.1988ms)[39m[39m
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/P_W/PROYECTO/Proyecto_igle/kit_evidencias/pruebas_unidad.test.mjs:87:88)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

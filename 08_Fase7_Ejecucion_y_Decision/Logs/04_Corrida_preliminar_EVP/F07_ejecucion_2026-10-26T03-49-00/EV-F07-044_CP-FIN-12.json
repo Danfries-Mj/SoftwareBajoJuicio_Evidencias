@@ -1,0 +1,37 @@
+{
+  "evidencia": "EV-F07-044",
+  "caso": "CP-FIN-12",
+  "requisito_o_riesgo": "RF-FIN-06",
+  "tecnica": "Tabla de decisión (rol × acción: eliminar cierre)",
+  "enfoque": "Verificación (seguridad)",
+  "precondicion": "Cierre de CP-FIN-10",
+  "datos": "Tesorero general elimina el cierre",
+  "resultado_esperado": "HTTP 403",
+  "criterio_aceptacion": "Solo el Sacerdote elimina cierres (HU-16)",
+  "resultado_obtenido": "HTTP 403",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-26T03:49:12.357Z",
+  "version_codigo": "ZIP SHA-256 27d59d5118638e883d7331a60dfad602077290a3088ac1474b09d356a71a5156",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "DELETE",
+      "ruta": "/api/cierres-mes/8",
+      "status": 403,
+      "ms": 2,
+      "respuesta": {
+        "mensaje": "No tiene permisos para realizar esta acción",
+        "rolesPermitidos": [
+          "Sacerdote"
+        ],
+        "rolActual": "Tesorero"
+      }
+    }
+  ]
+}

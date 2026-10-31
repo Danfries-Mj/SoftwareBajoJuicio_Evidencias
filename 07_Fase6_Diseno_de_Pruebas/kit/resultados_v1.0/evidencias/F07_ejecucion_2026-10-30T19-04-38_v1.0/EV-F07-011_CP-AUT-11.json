@@ -1,0 +1,38 @@
+{
+  "evidencia": "EV-F07-011",
+  "caso": "CP-AUT-11",
+  "requisito_o_riesgo": "RF-AUT-02; RNF-AUT-02",
+  "tecnica": "Tabla de decisión (dueño × acción)",
+  "enfoque": "Verificación (seguridad)",
+  "precondicion": "Sesión de Laico A",
+  "datos": "PUT /api/usuarios/2/perfil (perfil de otro laico)",
+  "resultado_esperado": "HTTP 403",
+  "criterio_aceptacion": "Solo se edita el perfil propio",
+  "resultado_obtenido": "HTTP 403",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-30T19:04:39.805Z",
+  "version_codigo": "ZIP SHA-256 d1cd257b1c7f461ace63e955fcc6d441536e6635604417bc56643e40a3602ba1",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "PUT",
+      "ruta": "/api/usuarios/2/perfil",
+      "cuerpo": {
+        "nombres": "X",
+        "apellidos": "Y",
+        "correo": "francheskabravo2019@gmail.com"
+      },
+      "status": 403,
+      "ms": 2,
+      "respuesta": {
+        "mensaje": "Solo puede editar su propio perfil"
+      }
+    }
+  ]
+}

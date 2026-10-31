@@ -1,0 +1,45 @@
+{
+  "evidencia": "EV-F07-021",
+  "caso": "CP-CAT-07",
+  "requisito_o_riesgo": "RF-CAT-01; RNF-FIN-02",
+  "tecnica": "Integración (trigger inscripción → inscrito → movimiento)",
+  "enfoque": "Verificación",
+  "precondicion": "Inscripción de $4,99 aprobada en CP-CAT-06",
+  "datos": "Movimientos de catequesis creados por esa aprobación",
+  "resultado_esperado": "No se genera un ingreso distinto de $5,00",
+  "criterio_aceptacion": "El ingreso de una inscripción es siempre $5,00",
+  "resultado_obtenido": "Ingresos generados: $4.99",
+  "estado": "FALLA",
+  "fecha_hora": "2026-10-30T19:04:48.854Z",
+  "version_codigo": "ZIP SHA-256 d1cd257b1c7f461ace63e955fcc6d441536e6635604417bc56643e40a3602ba1",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "GET",
+      "ruta": "/api/movimientos-financieros",
+      "status": 200,
+      "ms": 0,
+      "respuesta": [
+        {
+          "id_movimiento": 121,
+          "tipo": "Ingreso",
+          "categoria": "Catequesis",
+          "descripcion": "Inscripción catequesis - Eduardo Daniel Moran Medina",
+          "id_fondo": 2,
+          "monto": "4.99",
+          "fecha": "2026-10-30T05:00:00.000Z",
+          "justificacion": "Generado automáticamente al aprobar inscripción",
+          "registrado_por": 7,
+          "fondo_nombre": "Fondo General - Virgen del Rosario",
+          "id_capilla": 1
+        }
+      ]
+    }
+  ]
+}

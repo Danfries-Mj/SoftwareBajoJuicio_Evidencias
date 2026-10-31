@@ -1,0 +1,31 @@
+{
+  "evidencia": "EV-F07-060",
+  "caso": "CP-HOR-01",
+  "requisito_o_riesgo": "RF-HOR-01",
+  "tecnica": "Partición de equivalencia (sin sesión)",
+  "enfoque": "Validación",
+  "precondicion": "Ninguna",
+  "datos": "GET /api/eucaristias sin token",
+  "resultado_esperado": "HTTP 200 con lista",
+  "criterio_aceptacion": "Consulta pública (HU-02)",
+  "resultado_obtenido": "HTTP 200; 15 horarios",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-26T03:49:12.651Z",
+  "version_codigo": "ZIP SHA-256 27d59d5118638e883d7331a60dfad602077290a3088ac1474b09d356a71a5156",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "GET",
+      "ruta": "/api/eucaristias",
+      "status": 200,
+      "ms": 61,
+      "respuesta": "[15 registros]"
+    }
+  ]
+}

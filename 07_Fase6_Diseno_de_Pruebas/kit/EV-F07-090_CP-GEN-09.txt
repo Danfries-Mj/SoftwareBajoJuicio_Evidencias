@@ -1,0 +1,15 @@
+﻿CP-GEN-09 | 2026-10-30T23:40:46.298Z | http://localhost:3000 | 500 usuarios simultáneos durante 30 s
+Entorno: Node v24.14.1, Windows_NT 10.0.19045, CPU Intel(R) Core(TM) i7-7600U CPU @ 2.80GHz x4, RAM 15.9 GB
+┌────────────────────┬────────┐
+│ (index)            │ Values │
+├────────────────────┼────────┤
+│ peticiones         │ 48040  │
+│ por_segundo        │ 1601.3 │
+│ promedio_ms        │ 311.5  │
+│ p95_ms             │ 485.7  │
+│ p99_ms             │ 636.1  │
+│ maximo_ms          │ 647.4  │
+│ errores            │ 48040  │
+│ porcentaje_errores │ 100    │
+└────────────────────┴────────┘
+Criterio (P): errores < 5 % y el servidor sigue respondiendo → FALLA

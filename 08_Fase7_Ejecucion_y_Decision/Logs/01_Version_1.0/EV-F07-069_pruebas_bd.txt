@@ -1,0 +1,54 @@
+          fecha_hora          |     base     |                                  motor                                  
+------------------------------+--------------+-------------------------------------------------------------------------
+ 2026-10-30 13:57:41.62164-05 | sys_original | PostgreSQL 18.3 on x86_64-windows, compiled by msvc-19.44.35223, 64-bit
+
+ total_usuarios | con_bcrypt_coste_10_o_mas | porcentaje | estado 
+----------------+---------------------------+------------+--------
+             26 |                        26 |      100.0 | PASA
+
+      tabla_afectada      | registros | con_autor | con_hash_de_contrasena 
+--------------------------+-----------+-----------+------------------------
+ donaciones               |        56 |         3 |                      0
+ inscripciones_catequesis |        45 |         3 |                      0
+ movimientos_financieros  |       155 |        10 |                      0
+ solicitudes_sacramento   |        81 |         0 |                      0
+ usuarios                 |        81 |         2 |                     81
+
+ total | porcentaje_con_autor | con_hash | estado 
+-------+----------------------+----------+--------
+   418 |                  4.3 |       81 | FALLA
+
+ id_fondo |               nombre               | saldo_actual | suma_movimientos | diferencia | estado 
+----------+------------------------------------+--------------+------------------+------------+--------
+        2 | Fondo General - Virgen del Rosario |      -155.00 |          -155.00 |       0.00 | PASA
+        3 | Fondo General - Virgen de F�tima   |      1078.00 |          1078.00 |       0.00 | PASA
+        4 | Fondo General                      |      2127.00 |          1157.00 |     970.00 | FALLA
+        5 | Fondo de Salud                     |       891.00 |           441.00 |     450.00 | FALLA
+        7 | Fondo General - Cristo Liberador   |       524.00 |           524.00 |       0.00 | PASA
+
+BEGIN
+INSERT 0 1
+                  estado                   
+-------------------------------------------
+ FALLA: el motor aceptó un monto negativo
+
+ROLLBACK
+BEGIN
+INSERT 0 1
+INSERT 0 1
+ cierres_parroquiales_enero_2030 |                estado                
+---------------------------------+--------------------------------------
+                               2 | FALLA: el motor aceptó el duplicado
+
+ROLLBACK
+BEGIN
+INSERT 0 2
+ horarios_iguales |                estado                
+------------------+--------------------------------------
+                2 | FALLA: el motor aceptó el duplicado
+
+ROLLBACK
+ tablas | llaves_foraneas | restricciones_unique | triggers | indices_adicionales 
+--------+-----------------+----------------------+----------+---------------------
+     21 |              41 |                    7 |       14 |                   2
+

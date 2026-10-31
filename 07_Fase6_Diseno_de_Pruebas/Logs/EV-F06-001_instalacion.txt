@@ -1,0 +1,37 @@
+﻿EV-F06-001 | Registro de instalación del entorno de pruebas desde el paquete entregado
+Fecha y hora de inicio: 2026-10-30 18:28:18 (UTC-05:00)
+Ejecutor: Roberto Loayza | Equipo: DESKTOP-9F1O1KN
+Sistema: Microsoft Windows 10 Pro 10.0.19045 | Node.js v24.14.1 | npm 11.11.0
+Paquete: Narcisa de Jesús.zip | SHA-256 D1CD257B1C7F461ACE63E955FCC6D441536E6635604417BC56643E40A3602BA1
+Carpeta temporal de instalación (nueva): C:\Users\ADMIN\AppData\Local\Temp\SyS_instalacion_20261030_182817
+
+=== npm install en Narcisa de Jes£s\SyS\backend | inicio 2026-10-30 18:28:35 (UTC-05:00) ===
+
+added 147 packages, and audited 148 packages in 5s
+
+36 packages are looking for funding
+  run `npm fund` for details
+
+5 vulnerabilities (1 moderate, 3 high, 1 critical)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+Código de salida: 0 (instalación correcta) | Duración: 5,8 s | fin 2026-10-30 18:28:41 (UTC-05:00)
+
+=== npm install en Narcisa de Jes£s\SyS\frontend | inicio 2026-10-30 18:28:41 (UTC-05:00) ===
+
+added 473 packages, and audited 474 packages in 38s
+
+114 packages are looking for funding
+  run `npm fund` for details
+
+32 vulnerabilities (2 low, 9 moderate, 17 high, 4 critical)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+Código de salida: 0 (instalación correcta) | Duración: 38,5 s | fin 2026-10-30 18:29:20 (UTC-05:00)
+

@@ -1,0 +1,13 @@
+﻿PRUEBAS DEL CAMBIO CAM-01 | 2026-10-30T23:46:32.745Z | http://localhost:3000 | versión: v1.1 (parche 657d4354)
+Entorno: Node v24.14.1, Windows_NT 10.0.19045, CPU Intel(R) Core(TM) i7-7600U CPU @ 2.80GHz x4, RAM 15.9 GB
+
+=== CP-FIN-23 | RF-FIN-02, RNF-FIN-02, RSK-04 | Aprobación concurrente de la misma donación ===
+Datos: donación 27 de $50 pendiente; 20 aprobaciones simultáneas del Tesorero de la capilla 1
+Respuestas: 1 × HTTP 200, 19 × HTTP 409
+Saldo del fondo 2: -155 → -105 (Δ 50.00)
+Criterio: el saldo sube exactamente $50 (una sola aprobación efectiva) → PASA
+
+=== CP-GEN-10 | RNF-GEN-01, RF-FIN-05 | Consultas de Tesorería con la carga nueva ===
+100 usuarios simultáneos autenticados durante 30 s sobre /api/movimientos-financieros, /api/donaciones, /api/fondos
+Peticiones 27178 (905.9/s); promedio 110.4 ms; p95 187.6 ms; p99 335.5 ms; máximo 723.1 ms; errores 0
+Criterio (P): promedio < 500 ms, p95 < 1000 ms, 0 errores → PASA

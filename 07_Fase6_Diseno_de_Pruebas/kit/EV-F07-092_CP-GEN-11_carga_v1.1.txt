@@ -1,0 +1,2 @@
+﻿CP-GEN-08 | 2026-10-30T23:53:44.836Z | http://localhost:3000 | 100 usuarios simultáneos durante 75 s
+Entorno: Node v24.14.1, Windows_NT 10.0.19045, CPU Intel(R) Core(TM) i7-7600U CPU @ 2.80GHz x4, RAM 15.9 GB

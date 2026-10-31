@@ -1,0 +1,54 @@
+{
+  "evidencia": "EV-F07-004",
+  "caso": "CP-AUT-04",
+  "requisito_o_riesgo": "RF-AUT-07",
+  "tecnica": "Valores límite (8 caracteres, mínimo válido)",
+  "enfoque": "Verificación",
+  "precondicion": "Cédula válida no registrada",
+  "datos": "Contraseña \"Ab1.xyzw\" (8)",
+  "resultado_esperado": "HTTP 201, cuenta creada",
+  "criterio_aceptacion": "Cuenta creada con rol Laico",
+  "resultado_obtenido": "HTTP 201: Registro exitoso, ya puede iniciar sesión",
+  "estado": "PASA",
+  "fecha_hora": "2026-10-26T03:49:02.224Z",
+  "version_codigo": "ZIP SHA-256 27d59d5118638e883d7331a60dfad602077290a3088ac1474b09d356a71a5156",
+  "version_bd": "Dump SyS-Backup_2.0 SHA-256 5576dde00e2558984dda8966883244866f0e75f4a36c5a80c8f47083a552e4ae",
+  "ejecutor": "Roberto Loayza",
+  "entorno": {
+    "node": "v24.14.1",
+    "so": "Windows_NT 10.0.19045",
+    "base_url": "http://localhost:3000"
+  },
+  "peticiones": [
+    {
+      "metodo": "POST",
+      "ruta": "/api/auth/registro",
+      "cuerpo": {
+        "cedula": "0715420816",
+        "nombres": "Prueba",
+        "apellidos": "Limite Ocho",
+        "correo": "limite8.0715420816@prueba.test",
+        "contrasena": "Ab1.xyzw",
+        "id_capilla": 1
+      },
+      "status": 201,
+      "ms": 131,
+      "respuesta": {
+        "mensaje": "Registro exitoso, ya puede iniciar sesión",
+        "usuario": {
+          "rol": "Laico",
+          "activo": true,
+          "cedula": "0715420816",
+          "correo": "limite8.0715420816@prueba.test",
+          "nombres": "Prueba",
+          "telefono": null,
+          "apellidos": "Limite Ocho",
+          "id_capilla": 1,
+          "id_persona": 60,
+          "id_usuario": 36,
+          "fecha_registro": "2026-10-25T22:49:02.20407"
+        }
+      }
+    }
+  ]
+}
